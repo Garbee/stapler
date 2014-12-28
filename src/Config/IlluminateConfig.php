@@ -16,7 +16,7 @@ class IlluminateConfig implements ConfigurableInterface
      * 
      * @var string
      */
-    protected $packageName;
+    protected $name;
 
     /**
      * Constructor method.
@@ -24,10 +24,10 @@ class IlluminateConfig implements ConfigurableInterface
      * @param Repository $config
      * @param string $packageName
      */
-    function __construct(Repository $config, $packageName)
+    function __construct(Repository $config, $name)
     {
         $this->config = $config;
-        $this->packageName = $packageName;
+        $this->name = $name;
     }
 
     /**
@@ -37,7 +37,7 @@ class IlluminateConfig implements ConfigurableInterface
      * @return mixed
      */
     public function get($name){
-        return $this->config->get("$this->packageName::$name");
+        return $this->config->get($name);
     }
 
     /**
@@ -48,6 +48,6 @@ class IlluminateConfig implements ConfigurableInterface
      * @return mixed
      */
     public function set($name, $value){
-        return $this->config->set("$this->packageName::$name", $value);
+        return $this->config->set($name, $value);
     }
 }
