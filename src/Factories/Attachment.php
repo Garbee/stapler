@@ -59,7 +59,7 @@ class Attachment
         $defaultOptions = $config->get('stapler');
         $options = array_merge($defaultOptions, (array) $options);
         $storage = $options['storage'];
-        $options = array_replace_recursive($config->get($storage), $options);
+        $options = array_replace_recursive($config->get('stapler.'.$storage), $options);
         $options['styles'] = array_merge( (array) $options['styles'], ['original' => '']);
 
         return $options;
